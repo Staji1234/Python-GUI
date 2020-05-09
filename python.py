@@ -1,18 +1,16 @@
-with open("test.txt",'r') as f, open('output.txt','w') as fw:
-      text = f.read()
-      result_string = ''
+import re
 
-      words = ["artdoo", "Rina", "mahal"]
-      text2 = text.split(".")
-      for itemIndex in range(len(text2)):
-          for word in words:
-              if word in text2[itemIndex]:
-                  if text2[itemIndex][0] ==' ':
-                      print(text2[itemIndex][1:])
-                      result_string += text2[itemIndex][1:]+'. '
-                      break
-                  else:
-                      print(text2[itemIndex])
-                      result_string += text2[itemIndex]
-                      break
-   
+filename = input("Enter your file name(.txt format) :") + ".txt"
+p = input("Enter the word you want to search : ")
+with open(filename, 'r') as f:
+  lines = f.read()
+  
+  print(lines)
+  print("\n *********Output********\n")
+  for line in lines.split("."):
+        if re.match("(.*\s)"+p+"(\s.*)", line, re.DOTALL):
+            print(line+".")
+     
+
+
+    
